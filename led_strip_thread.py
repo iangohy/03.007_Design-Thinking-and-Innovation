@@ -1,14 +1,20 @@
 import RPi.GPIO as GPIO
 from time import sleep
 import logging
+import threading
 
-class Led_strip:
-    def __init__(self, pin):
+class LedThread(threading.Thread):
+    def __init__(self, pin, duration):
+        threading.Thread.__init__(self)
         self.pin = pin
+        self.duration = duration
         GPIO.setup(pin, GPIO.OUT, initial=GPIO.LOW)
 
-    def blink(self, duration=15):
-        total_count = int(duration / 3)
+    def run(self):
+        total_count = int(self.duration / 3)
+        
+        GPIO.output(self.pin, GPIO.HIGH)
+        sleep(1)
 
         for i in range(total_count):
             logging.info("HIGH")
@@ -31,5 +37,6 @@ if __name__ == "__main__":
                         datefmt="%H:%M:%S")
     setup()
 
-    white_led = Led_strip(21)
-    white_led.blink()
+    white_led_thread = LedThread(21, 15)
+    white_led_thread.start()
+    print("hello world!")
