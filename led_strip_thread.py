@@ -5,7 +5,7 @@ import threading
 
 class LedThread(threading.Thread):
     def __init__(self, pin, duration):
-        threading.Thread.__init__(self)
+        threading.Thread.__init__(self, daemon=True)
         self.pin = pin
         self.duration = duration
         GPIO.setup(pin, GPIO.OUT, initial=GPIO.LOW)
