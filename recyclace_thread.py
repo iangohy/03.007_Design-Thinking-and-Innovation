@@ -12,7 +12,8 @@ def readBarcode():
     try:
         fp = open('/dev/hidraw0', 'rb')
     except FileNotFoundError:
-        print("Unable to connect to barcode scanner! Is it plugged in?")
+        logging.error("[ERROR] Unable to connect to barcode scanner! Is it plugged in?")
+        logging.info("Recyclace software quitting...")
         quit()
     except:
         print("Unexpected error:", sys.exc_info()[0])
@@ -83,14 +84,10 @@ if __name__ == "__main__":
     format = "%(asctime)s: %(message)s"
     logging.basicConfig(format=format, level=logging.INFO,
                         datefmt="%H:%M:%S")
-    try:
-        setup()
-        
-        barcodeThread = threading.Thread(target=getBarcodeData)
-        barcodeThread.start()
-        white_led_thread = LedThread(21, 15)
-        white_led_thread.start()
-        logging.info("Recyclace software started!")
-    except:
-        print("Unable to run Recyclace software!")
-        print("Error:", sys.exc_info()[0])
+    logging.info("Recyclace software started!")
+    setup()
+    
+    barcodeThread = threading.Thread(target=getBarcodeData)
+    barcodeThread.start()
+    white_led_thread = LedThread(21, 15)
+    white_led_thread.start()
