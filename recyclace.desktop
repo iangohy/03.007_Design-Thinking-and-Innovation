@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Recyclace
+Exec=/home/pi/03.007_Design-Thinking-and-Innovation/run.sh
+Terminal=true
+Type=Application  
