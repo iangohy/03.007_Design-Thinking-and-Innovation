@@ -1,5 +1,7 @@
 #/usr/bin/env bash
 
+cd /home/pi/03.007_Design-Thinking-and-Innovation
+
 COUNTER=1
 while [ $COUNTER -lt 4 ]; do
     echo "-------------"
