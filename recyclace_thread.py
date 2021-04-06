@@ -110,8 +110,7 @@ def getBarcodeData():
 def classifyWaste():
     while True:
         category = getBarcodeData()
-        print(category)
-        LED_COUNTER[category] += BLINK_COUNT
+        LED_COUNTER[category] = BLINK_COUNT
 
 def setup():
     GPIO.setwarnings(False)
