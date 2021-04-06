@@ -3,13 +3,14 @@ import RPi.GPIO as GPIO
 from time import sleep
 import logging
 import threading
+import os
 
 PLASTIC_PIN = 16
 PAPER_PIN = 26
 CAN_PIN = 21
 WASTE_PIN = 20
 
-BLINK_COUNT = 3
+BLINK_COUNT = 2
 
 LED_COUNTER = {"plastic": 0, "paper": 0, "can": 0, "waste": 0}
 
@@ -31,7 +32,7 @@ class LedThread(threading.Thread):
             if LED_COUNTER[self.category] > 0:
                 logging.info(self.category + " HIGH")
                 GPIO.output(self.pin, GPIO.HIGH)
-                sleep(2)
+                sleep(5)
 
                 logging.info(self.category + " LOW")
                 GPIO.output(self.pin, GPIO.LOW)
@@ -94,6 +95,9 @@ def readBarcode():
 
 def getBarcodeData():
     res = readBarcode() 
+    # Check shutdown
+    if res == "SHUTDOWN":
+        os.system("sudo shutdown -h now")
     # Check against database
     with open("data.csv") as data:
         reader = csv.reader(data)
