@@ -27,4 +27,4 @@ while [ $COUNTER -lt 4 ]; do
     sleep 5
 done
 
-python3 recyclace_thread.py
+python3 /home/pi/03.007_Design-Thinking-and-Innovation/recyclace_thread.py
