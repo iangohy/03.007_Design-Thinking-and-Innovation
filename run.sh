@@ -7,6 +7,7 @@ while [ $COUNTER -lt 4 ]; do
 
     if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
         echo "IPv4 is up"
+	echo "IP Address: $(hostname -I)"
         git stash
         git pull git@github.com:iangohy/03.007_Design-Thinking-and-Innovation.git --rebase
         break

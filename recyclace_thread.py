@@ -10,7 +10,7 @@ PAPER_PIN = 26
 CAN_PIN = 21
 WASTE_PIN = 20
 
-BLINK_COUNT = 2
+BLINK_COUNT = 3
 
 LED_COUNTER = {"plastic": 0, "paper": 0, "can": 0, "waste": 0}
 
@@ -36,7 +36,7 @@ class LedThread(threading.Thread):
 
                 logging.info(self.category + " LOW")
                 GPIO.output(self.pin, GPIO.LOW)
-                sleep(1)
+                sleep(0.5)
 
                 LED_COUNTER[self.category] -= 1
             else:
@@ -88,6 +88,7 @@ def readBarcode():
     except FileNotFoundError:
         logging.error("[ERROR] Unable to connect to barcode scanner! Is it plugged in?")
         logging.info("Recyclace software quitting...")
+        input("Press any enter to continue...")
         quit()
     except:
         print("Unexpected error:", sys.exc_info()[0])
@@ -98,6 +99,7 @@ def getBarcodeData():
     # Check shutdown
     if res == "SHUTDOWN":
         os.system("sudo shutdown -h now")
+        quit()
     # Check against database
     with open("data.csv") as data:
         reader = csv.reader(data)
