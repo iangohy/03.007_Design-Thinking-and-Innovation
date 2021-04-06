@@ -138,3 +138,8 @@ if __name__ == "__main__":
     waste_led_thread = LedThread(WASTE_PIN, "waste")
     waste_led_thread.start()
 
+    paper_led_thread = LedThread(PAPER_PIN, "paper")
+    paper_led_thread.start()
+
+    plastic_led_thread = LedThread(PLASTIC_PIN, "plastic")
+    plastic_led_thread.start()
