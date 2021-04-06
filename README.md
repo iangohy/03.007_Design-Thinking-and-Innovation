@@ -11,8 +11,27 @@ A smart recycling bin with moveable compartments and a barcode scanning feature,
 | SCL | SCL |
 | SDA | SDA |
 
+### Stepper Motor Driver TB6600
+| Raspberry Pi                | TB6600 |
+| --------------------------- | ------ |
+| GPIO 17                     | ENA-   |
+| 3.3V                        | ENA+   |
+| GPIO 27                     | DIR-   |
+| 3.3V                        | DIR+   |
+| GPIO 22                     | PUL-   |
+| 3.3V                        | PUL+   |
+| - (Connect to motor yellow) | B-     |
+| - (Connect to motor red)    | B+     |
+| - (Connect to motor green)  | A-     |
+| - (Connect to motor blue)   | A+     |
+| 12V Power Supply            | VCC    |
+| GND                         | GND    |
+
+###  LED Strips
+
 
 ## Files
+
 data.csv - Barcode database of items
 
 ## VL53L0X Sensor Testing
