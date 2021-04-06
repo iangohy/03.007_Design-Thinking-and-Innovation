@@ -10,7 +10,7 @@ PAPER_PIN = 26
 CAN_PIN = 21
 WASTE_PIN = 20
 
-BLINK_COUNT = 3
+BLINK_COUNT = 2
 
 LED_COUNTER = {"plastic": 1, "paper": 1, "can": 1, "waste": 1}
 
