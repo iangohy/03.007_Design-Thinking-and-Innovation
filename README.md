@@ -30,6 +30,12 @@ A smart recycling bin with moveable compartments and a barcode scanning feature,
 | GND                         | GND    |
 
 ###  LED Strips
+| Raspberry Pi                | LED |
+| --------------------------- | ------ |
+| GPIO 16                     | RED- (via 1k resistor) |
+| GPIO 26                     | BLUE- (via 1k resistor) |
+| GPIO 19                     | YELLOW- (via 1k resistor) |
+| GPIO 20                     | GREEN- (via 1k resistor) |
 
 
 ## Files

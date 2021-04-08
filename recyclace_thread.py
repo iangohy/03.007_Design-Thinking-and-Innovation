@@ -8,10 +8,10 @@ import threading
 import os
 import RPi.GPIO as GPIO
 
-PLASTIC_PIN = 16
-PAPER_PIN = 26
-CAN_PIN = 21
-WASTE_PIN = 20
+PLASTIC_PIN = 16    # RED
+PAPER_PIN = 26  # BLUE
+CAN_PIN = 19    # YELLOW
+WASTE_PIN = 20  # GREEN
 
 BLINK_COUNT = 2
 
