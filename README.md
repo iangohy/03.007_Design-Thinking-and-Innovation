@@ -37,6 +37,12 @@ A smart recycling bin with moveable compartments and a barcode scanning feature,
 | GPIO 19                     | YELLOW- (via 1k resistor) |
 | GPIO 20                     | GREEN- (via 1k resistor) |
 
+### Keylock Switch
+| Raspberry Pi                | Switch |
+| --------------------------- | ------ |
+| GPIO 14                     | Terminal A |
+| 3.3V                        | Terminal B |
+
 
 ## Files
 

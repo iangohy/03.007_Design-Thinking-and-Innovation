@@ -13,6 +13,8 @@ PAPER_PIN = 26  # BLUE
 CAN_PIN = 19    # YELLOW
 WASTE_PIN = 20  # GREEN
 
+BUTTON_PIN = 14
+
 BLINK_COUNT = 4
 
 LED_COUNTER = {"plastic": 1, "paper": 1, "can": 1, "waste": 1}
@@ -65,9 +67,16 @@ def classifyWaste():
         category = barcode.getBarcodeData()
         LED_COUNTER[category] = BLINK_COUNT
 
+def moveMotorButtonPress():
+    while True:
+        if GPIO.input(BUTTON_PIN):
+            logging.info("Button press!")
+
 def setup():
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
+
+    GPIO.setup(BUTTON_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 if __name__ == "__main__":
     format = "%(asctime)s: %(message)s"
