@@ -3,6 +3,8 @@
 A smart recycling bin with moveable compartments and a barcode scanning feature, enhancing the ease of recycling and recycling efficiency.
 
 ## Hardware Wiring
+### Raspberrypi Pinout
+![Rpi GPIO Pinout](https://www.raspberrypi.org/documentation/usage/gpio/images/GPIO-Pinout-Diagram-2.png)
 ### Pololu VL53L0X TOF sensor
 | Raspberry Pi | Sensor |
 | ------------ | ------ |
