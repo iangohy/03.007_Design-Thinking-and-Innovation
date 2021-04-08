@@ -13,7 +13,7 @@ PAPER_PIN = 26  # BLUE
 CAN_PIN = 19    # YELLOW
 WASTE_PIN = 20  # GREEN
 
-BLINK_COUNT = 2
+BLINK_COUNT = 4
 
 LED_COUNTER = {"plastic": 1, "paper": 1, "can": 1, "waste": 1}
 
@@ -31,11 +31,11 @@ class LedThread(threading.Thread):
             if LED_COUNTER[self.category] > 0:
                 logging.info(self.category + " HIGH")
                 GPIO.output(self.pin, GPIO.HIGH)
-                sleep(5)
+                sleep(1.5)
 
                 logging.info(self.category + " LOW")
                 GPIO.output(self.pin, GPIO.LOW)
-                sleep(0.5)
+                sleep(0.2)
 
                 LED_COUNTER[self.category] -= 1
             else:
