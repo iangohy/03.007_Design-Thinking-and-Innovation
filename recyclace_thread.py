@@ -71,6 +71,8 @@ def moveMotorButtonPress():
     while True:
         if GPIO.input(BUTTON_PIN):
             logging.info("Button press!")
+            stepper.main()
+            sleep(10)
 
 def setup():
     GPIO.setwarnings(False)
