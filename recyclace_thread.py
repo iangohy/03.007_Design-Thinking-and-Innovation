@@ -99,3 +99,6 @@ if __name__ == "__main__":
     
     barcodeThread = threading.Thread(target=classifyWaste)
     barcodeThread.start()
+
+    motorThread = threading.Thread(target=moveMotorButtonPress, daemon=True)
+    motorThread.start()
