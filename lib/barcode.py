@@ -45,6 +45,8 @@ def getBarcodeData():
         os.system("sudo shutdown -h now")
         quit()
     # Check against database
+    elif res == "REBOOT":
+        os.system("sudo reboot")
     with open("data.csv") as data:
         reader = csv.reader(data)
         item = []
