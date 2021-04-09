@@ -32,7 +32,7 @@ def readBarcode():
     except FileNotFoundError:
         logging.error("[ERROR] Unable to connect to barcode scanner! Is it plugged in?")
         logging.info("Recyclace software quitting...")
-        input("Press any enter to continue...")
+        input("Press enter to continue...")
         quit()
     except:
         print("Unexpected error:", sys.exc_info()[0])
