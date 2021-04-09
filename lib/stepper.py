@@ -23,6 +23,8 @@ class StepperMotor:
         GPIO.output(enable_pin, GPIO.HIGH)
 
     def rotate(self, num_rev = 1):
+        self.percent += num_rev * self.percent_per_rev
+
         # Set direction
         if num_rev >= 0:
             direction = "clockwise"
@@ -44,11 +46,10 @@ class StepperMotor:
             # print(".")
             sleep(sleep_len)
 
-        self.percent += num_rev * self.percent_per_rev
         print(f"Stepper now at {self.percent}%")
 
         with open("stepper_loc.txt", "w") as location:
-            location.write(self.percent)
+            location.write(f"{self.percent}")
 
 def main():
     nema23 = StepperMotor(rps = 1, pulse_per_rev = 1600)
