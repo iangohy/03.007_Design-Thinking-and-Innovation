@@ -12,8 +12,12 @@ PLASTIC_PIN = 16    # RED
 PAPER_PIN = 26  # BLUE
 CAN_PIN = 19    # YELLOW
 WASTE_PIN = 20  # GREEN
-
 BUTTON_PIN = 14
+ENA_PIN = 17
+DIR_PIN = 27
+PUL_PIN = 22
+RPS = 1
+PULSE_PER_REV = 800
 
 BLINK_COUNT = 4
 
@@ -76,8 +80,10 @@ def moveMotorButtonPress():
     while True:
         if GPIO.input(BUTTON_PIN):
             logging.info("Button press!")
-            stepper.main()
-            sleep(10)
+            motor_1 = stepper.StepperMotor(enable_pin=ENA_PIN, dir_pin=DIR_PIN, pulse_pin=PUL_PIN, rps = RPS, pulse_per_rev = PULSE_PER_REV)
+            motor_1.rotate(3)
+            motor_1.rotate(-3)
+            sleep(5)
 
 def setup():
     GPIO.setwarnings(False)
