@@ -12,8 +12,8 @@ class StepperMotor:
         self.rps = rps
         self.pulsePerRev = pulsePerRev
         self.percentPerRev = percentPerRev
-        self.percent_max = percent_max
-        self.percent_min = percent_min
+        self.percentMax = percentMax
+        self.percentMin = percentMin
         with open("stepper_loc.txt", "r") as location:
             self.percent = int(location.read())
             print(f"Stepper currently at {self.percent}%")
@@ -38,7 +38,7 @@ class StepperMotor:
             GPIO.output(self.dirPin, GPIO.LOW)
 
         print(f"Rotating {num_rev} revolution(s) {direction} at {self.rps} revolutions per second")
-        for i in range(self.pulsePerRev * num_rev):
+        for i in range(int(self.pulsePerRev * num_rev)):
             sleep_len = 1/(2 * self.pulsePerRev * self.rps)
             # sleep_len = 0.01
 
@@ -56,14 +56,41 @@ class StepperMotor:
 
     def rotateTo(self, percent):
         currentPercent = self.percent
-        if percent > self.percent_max:
-            logging.info(f"Over percent_max, moving to {self.percent_max} (percent_max)")
-            percent_to_move = percent_max - currentPercent
-        self.percent += num_rev * self.percentPerRev
+        percentMax = self.percentMax
+        percentMin = self.percentMin
+        percentPerRev = self.percentPerRev
+
+        if percent > percentMax:
+            logging.info(f"Over percentMax, moving to {percentMax}% (percentMax)")
+            percentToMove = percentMax - currentPercent
+            revToMove = percentToMove / percentPerRev
+            rotate(revToMove)
+
+            self.percent = percentMax
+
+        elif percent < percentMin:
+            logging.info(f"Under percentMin, moving to {percentMin}% (percentMin)")
+            percentToMove = currentPercent - percentMin
+            revToMove = percentToMove / percentPerRev
+            rotate(revToMove)
+
+            self.percent = percentMin
+        
+        else:
+            percentToMove = percent - currentPercent
+            revToMove = percentToMove / percentPerRev
+            rotate(revToMove)
+
+            self.percent = percent
+
+        with open("stepper_loc.txt", "w") as location:
+                location.write(str(self.percent))
+
 def main():
     nema23 = StepperMotor(rps = 1, pulsePerRev = 1600)
-    nema23.rotate(3)
-    nema23.rotate(-3)
+    while True:
+        value = input("Enter percentage to rotate to:")
+        nema23.rotateTo(value)
 
 if __name__ == "__main__":
     main()
