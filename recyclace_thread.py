@@ -67,6 +67,11 @@ def classifyWaste():
         category = barcode.getBarcodeData()
         LED_COUNTER[category] = BLINK_COUNT
 
+def classifyWasteTesting():
+    while True:
+        category = input("[TESTING MODE] Manually input category:")
+        LED_COUNTER[category] = BLINK_COUNT
+
 def moveMotorButtonPress():
     while True:
         if GPIO.input(BUTTON_PIN):
@@ -99,7 +104,10 @@ if __name__ == "__main__":
     plastic_led_thread = LedThread(PLASTIC_PIN, "plastic")
     plastic_led_thread.start()
     
-    barcodeThread = threading.Thread(target=classifyWaste)
+    if os.getenv('recyclace') == "testing":
+        barcodeThread = threading.Thread(target=classifyWasteTesting)
+    else:
+        barcodeThread = threading.Thread(target=classifyWaste)
     barcodeThread.start()
 
     motorThread = threading.Thread(target=moveMotorButtonPress, daemon=True)

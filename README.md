@@ -2,6 +2,9 @@
 ## Recyclace
 A smart recycling bin with moveable compartments and a barcode scanning feature, enhancing the ease of recycling and recycling efficiency.
 
+## Testing mode
+For testing without barcode scanner, set `$recyclace=testing`
+
 ## Hardware Wiring
 ### Raspberrypi Pinout
 ![Rpi GPIO Pinout](https://www.raspberrypi-spy.co.uk/wp-content/uploads/2012/06/Raspberry-Pi-GPIO-Header-with-Photo.png)
