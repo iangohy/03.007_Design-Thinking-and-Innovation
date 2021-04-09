@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 
 cd /home/pi/03.007_Design-Thinking-and-Innovation
 
