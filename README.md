@@ -35,10 +35,10 @@ For testing without barcode scanner, set `$recyclace=testing`
 ###  LED Strips
 | Raspberry Pi                | LED |
 | --------------------------- | ------ |
-| GPIO 16                     | RED- (via 1k resistor) |
-| GPIO 26                     | BLUE- (via 1k resistor) |
-| GPIO 19                     | YELLOW- (via 1k resistor) |
-| GPIO 20                     | GREEN- (via 1k resistor) |
+| GPIO 16                     | RED- (via 10k resistor) |
+| GPIO 26                     | BLUE- (via 10k resistor) |
+| GPIO 19                     | YELLOW- (via 10k resistor) |
+| GPIO 20                     | GREEN- (via 10k resistor) |
 
 ### Keylock Switch
 | Raspberry Pi                | Switch |
