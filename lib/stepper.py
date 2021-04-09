@@ -1,3 +1,4 @@
+import logging
 from time import sleep
 import RPi.GPIO as GPIO
 
@@ -15,15 +16,14 @@ class StepperMotor:
         self.percentMax = percentMax
         self.percentMin = percentMin
         with open("stepper_loc.txt", "r") as location:
-            self.percent = int(location.read())
-            print(f"Stepper currently at {self.percent}%")
+            self.percent = location.readline()
+            logging.info(f"Stepper currently at {self.percent}%")
 
-
+        GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(dirPin, GPIO.OUT)
         GPIO.setup(enablePin, GPIO.OUT)
         GPIO.setup(pulsePin, GPIO.OUT)
-        GPIO.setwarnings(False)
 
         GPIO.output(enablePin, GPIO.HIGH)
 
@@ -37,7 +37,7 @@ class StepperMotor:
             num_rev = -num_rev
             GPIO.output(self.dirPin, GPIO.LOW)
 
-        print(f"Rotating {num_rev} revolution(s) {direction} at {self.rps} revolutions per second")
+        logging.info(f"Rotating {num_rev} revolution(s) {direction} at {self.rps} revolutions per second")
         for i in range(int(self.pulsePerRev * num_rev)):
             sleep_len = 1/(2 * self.pulsePerRev * self.rps)
             # sleep_len = 0.01
@@ -49,22 +49,18 @@ class StepperMotor:
             # print(".")
             sleep(sleep_len)
 
-        print(f"Stepper now at {self.percent}%")
-
-        with open("stepper_loc.txt", "w") as location:
-            location.write(f"{self.percent}")
-
     def rotateTo(self, percent):
-        currentPercent = self.percent
-        percentMax = self.percentMax
-        percentMin = self.percentMin
-        percentPerRev = self.percentPerRev
+        percent = int(percent)
+        currentPercent = int(self.percent)
+        percentMax = int(self.percentMax)
+        percentMin = int(self.percentMin)
+        percentPerRev = int(self.percentPerRev)
 
         if percent > percentMax:
             logging.info(f"Over percentMax, moving to {percentMax}% (percentMax)")
             percentToMove = percentMax - currentPercent
             revToMove = percentToMove / percentPerRev
-            rotate(revToMove)
+            self.rotate(revToMove)
 
             self.percent = percentMax
 
@@ -72,21 +68,27 @@ class StepperMotor:
             logging.info(f"Under percentMin, moving to {percentMin}% (percentMin)")
             percentToMove = currentPercent - percentMin
             revToMove = percentToMove / percentPerRev
-            rotate(revToMove)
+            self.rotate(revToMove)
 
             self.percent = percentMin
         
         else:
             percentToMove = percent - currentPercent
             revToMove = percentToMove / percentPerRev
-            rotate(revToMove)
+            self.rotate(revToMove)
 
             self.percent = percent
 
+        logging.info(f"Stepper now at {self.percent}%")
         with open("stepper_loc.txt", "w") as location:
                 location.write(str(self.percent))
 
 def main():
+    format = "%(asctime)s: %(message)s"
+    logging.basicConfig(format=format, level=logging.INFO,
+                        datefmt="%H:%M:%S")
+    logging.info("Recyclace software started!")
+
     nema23 = StepperMotor(rps = 1, pulsePerRev = 1600)
     while True:
         value = input("Enter percentage to rotate to:")
@@ -94,3 +96,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
