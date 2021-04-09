@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export recyclace=test
+export recyclace=testing
 cd /home/pi/03.007_Design-Thinking-and-Innovation
 
 COUNTER=1
