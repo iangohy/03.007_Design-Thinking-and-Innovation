@@ -38,8 +38,9 @@ def readBarcode():
         print("Unexpected error:", sys.exc_info()[0])
         raise
 
-def getBarcodeData():
-    res = readBarcode() 
+def getBarcodeData(res=0):
+    if res == 0:
+        res = readBarcode() 
     # Check shutdown
     if res == "SHUTDOWN":
         os.system("sudo shutdown -h now")
@@ -47,6 +48,8 @@ def getBarcodeData():
     # Check against database
     elif res == "REBOOT":
         os.system("sudo reboot")
+    elif res == "QUIT":
+        quit()
     with open("data.csv") as data:
         reader = csv.reader(data)
         item = []

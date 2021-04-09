@@ -74,7 +74,8 @@ def classifyWaste():
 
 def classifyWasteTesting():
     while True:
-        category = input("[TESTING MODE] Manually input category:")
+        testInput = input("[TESTING MODE] Manually input category:")
+        category = barcode.getBarcodeData(testInput)
         LED_COUNTER[category] = BLINK_COUNT
 
 def moveMotorButtonPress():
