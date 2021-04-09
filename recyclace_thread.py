@@ -81,7 +81,7 @@ def moveMotorButtonPress():
     while True:
         if GPIO.input(BUTTON_PIN):
             logging.info("Button press!")
-            motor_1 = stepper.StepperMotor(enable_pin=ENA_PIN, dir_pin=DIR_PIN, pulse_pin=PUL_PIN, rps = RPS, pulse_per_rev = PULSE_PER_REV, percent_per_rev=PERCENT_PER_REV)
+            motor_1 = stepper.StepperMotor(enablePin=ENA_PIN, dirPin=DIR_PIN, pulsePin=PUL_PIN, rps = RPS, pulsePerRev = PULSE_PER_REV, percentPerRev=PERCENT_PER_REV)
             motor_1.rotate(3)
             motor_1.rotate(-3)
             sleep(5)
