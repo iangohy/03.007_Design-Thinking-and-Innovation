@@ -10,7 +10,7 @@ class StepperMotor:
         self.pulse_per_rev = pulse_per_rev
         self.percent_per_rev = percent_per_rev
         with open("stepper_loc.txt", "r") as location:
-            self.percent = location.read()
+            self.percent = int(location.read())
             print(f"Stepper currently at {self.percent}%")
 
 
