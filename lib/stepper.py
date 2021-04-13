@@ -15,7 +15,7 @@ class StepperMotor:
         self.percentPerRev = percentPerRev
         self.percentMax = percentMax
         self.percentMin = percentMin
-        with open("stepper_loc.txt", "r") as location:
+        with open("/home/pi/03.007_Design-Thinking-and-Innovation/lib/stepper_loc.txt", "r") as location:
             self.percent = location.readline()
             logging.info(f"Stepper currently at {self.percent}%")
 
@@ -80,7 +80,7 @@ class StepperMotor:
             self.percent = percent
 
         logging.info(f"Stepper now at {self.percent}%")
-        with open("stepper_loc.txt", "w") as location:
+        with open("/home/pi/03.007_Design-Thinking-and-Innovation/lib/stepper_loc.txt", "w") as location:
                 location.write(str(self.percent))
 
 def main():
