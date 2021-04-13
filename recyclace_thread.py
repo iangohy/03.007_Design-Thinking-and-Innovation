@@ -16,9 +16,9 @@ BUTTON_PIN = 14
 ENA_PIN = 17
 DIR_PIN = 27
 PUL_PIN = 22
-RPS = 1
+RPS = 8
 PULSE_PER_REV = 800
-PERCENT_PER_REV = 10
+PERCENT_PER_REV = 4
 
 BLINK_COUNT = 4
 
@@ -87,10 +87,10 @@ def moveMotorButtonPress():
                 motor_1 = stepper.StepperMotor(enablePin=ENA_PIN, dirPin=DIR_PIN, pulsePin=PUL_PIN, rps = RPS, pulsePerRev = PULSE_PER_REV, percentPerRev=PERCENT_PER_REV)
 
                 # Calculate optimum percentage
-                if int(motor_1.percent) != 35:
-                    motor_1.rotateTo(35)
+                if int(motor_1.percent) != 90:
+                    motor_1.rotateTo(90)
                 else:
-                    motor_1.rotateTo(20)
+                    motor_1.rotateTo(30)
                 sleep(5)
 
 def setup():

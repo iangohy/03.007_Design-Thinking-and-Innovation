@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 class StepperMotor:
     def __init__(self, enablePin=17, dirPin=27, pulsePin=22, \
         rps = 1, pulsePerRev = 800, percentPerRev = 10, \
-            percentMax=80, percentMin=20):
+            percentMax=100, percentMin=0):
 
         self.enablePin = enablePin
         self.dirPin = dirPin
@@ -60,7 +60,7 @@ class StepperMotor:
             logging.info(f"Over percentMax, moving to {percentMax}% (percentMax)")
             percentToMove = percentMax - currentPercent
             revToMove = percentToMove / percentPerRev
-            self.rotate(revToMove)
+            self.rotate(-revToMove)
 
             self.percent = percentMax
 
@@ -68,14 +68,14 @@ class StepperMotor:
             logging.info(f"Under percentMin, moving to {percentMin}% (percentMin)")
             percentToMove = currentPercent - percentMin
             revToMove = percentToMove / percentPerRev
-            self.rotate(revToMove)
+            self.rotate(-revToMove)
 
             self.percent = percentMin
         
         else:
             percentToMove = percent - currentPercent
             revToMove = percentToMove / percentPerRev
-            self.rotate(revToMove)
+            self.rotate(-revToMove)
 
             self.percent = percent
 
@@ -89,7 +89,7 @@ def main():
                         datefmt="%H:%M:%S")
     logging.info("Recyclace software started!")
 
-    nema23 = StepperMotor(rps = 1, pulsePerRev = 1600)
+    nema23 = StepperMotor(rps = 1, pulsePerRev = 1600, percentPerRev = 8)
     while True:
         value = input("Enter percentage to rotate to:")
         nema23.rotateTo(value)
