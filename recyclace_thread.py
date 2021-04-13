@@ -126,7 +126,3 @@ if __name__ == "__main__":
 
     motorThread = threading.Thread(target=moveMotorButtonPress, daemon=True)
     motorThread.start()
-
-    while True:
-        print("BUTTON", GPIO.input(BUTTON_PIN))
-        sleep(2)
