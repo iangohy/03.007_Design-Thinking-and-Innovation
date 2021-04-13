@@ -80,16 +80,18 @@ def classifyWasteTesting():
 
 def moveMotorButtonPress():
     while True:
-        if GPIO.input(BUTTON_PIN):
-            logging.info("Button press!")
-            motor_1 = stepper.StepperMotor(enablePin=ENA_PIN, dirPin=DIR_PIN, pulsePin=PUL_PIN, rps = RPS, pulsePerRev = PULSE_PER_REV, percentPerRev=PERCENT_PER_REV)
+        if GPIO.input(BUTTON_PIN) == 1:
+            sleep(0.5)
+            if GPIO.input(BUTTON_PIN) == 1:
+                logging.info("Button press!")
+                motor_1 = stepper.StepperMotor(enablePin=ENA_PIN, dirPin=DIR_PIN, pulsePin=PUL_PIN, rps = RPS, pulsePerRev = PULSE_PER_REV, percentPerRev=PERCENT_PER_REV)
 
-            # Calculate optimum percentage
-            if int(motor_1.percent) != 35:
-                motor_1.rotateTo(35)
-            else:
-                motor_1.rotateTo(20)
-            sleep(5)
+                # Calculate optimum percentage
+                if int(motor_1.percent) != 35:
+                    motor_1.rotateTo(35)
+                else:
+                    motor_1.rotateTo(20)
+                sleep(5)
 
 def setup():
     GPIO.setwarnings(False)
@@ -124,3 +126,7 @@ if __name__ == "__main__":
 
     motorThread = threading.Thread(target=moveMotorButtonPress, daemon=True)
     motorThread.start()
+
+    while True:
+        print("BUTTON", GPIO.input(BUTTON_PIN))
+        sleep(2)
