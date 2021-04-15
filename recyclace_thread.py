@@ -100,7 +100,7 @@ def measureDist():
         try:
             tof.getDistance(TOF_INTERVAL, TOF_MAX)
         except:
-            print("Unable to read, retrying in 5s...")
+            logging.error("Unable to read TOF sensor, retrying in 5s...")
             sleep(5)
 
 
