@@ -1,5 +1,6 @@
 import lib.barcode as barcode
 import lib.stepper as stepper
+import lib.tof as tof
 
 import csv
 from time import sleep
@@ -93,6 +94,16 @@ def moveMotorButtonPress():
                     motor_1.rotateTo(30)
                 sleep(5)
 
+def measureDist():
+    while True:
+        try:
+            tof.getDistance()
+        except:
+            print("Unable to read, retrying in 5s...")
+            time.sleep(5)
+
+
+
 def setup():
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
@@ -126,3 +137,6 @@ if __name__ == "__main__":
 
     motorThread = threading.Thread(target=moveMotorButtonPress, daemon=True)
     motorThread.start()
+
+    tofThread = threading.Thread(target=measureDist, daemon=True)
+    tofthread.start()
