@@ -11,7 +11,7 @@ import busio
  
 import adafruit_vl53l0x
 
-def getDistance():
+def getDistance(interval):
  
     # Initialize I2C bus and sensor.
     i2c = busio.I2C(board.SCL, board.SDA)
@@ -28,5 +28,5 @@ def getDistance():
     
     # Main loop will read the range and print it every second.
     while True:
-        logging.log("Range: {0}mm".format(vl53.range))
-        time.sleep(1.0)
+        logging.info(f"Range: {vl53.range}mm")
+        time.sleep(interval)

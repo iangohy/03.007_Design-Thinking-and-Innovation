@@ -20,8 +20,8 @@ PUL_PIN = 22
 RPS = 8
 PULSE_PER_REV = 800
 PERCENT_PER_REV = 4
-
 BLINK_COUNT = 4
+TOF_INTERVAL = 3
 
 LED_COUNTER = {"plastic": 1, "paper": 1, "can": 1, "waste": 1}
 
@@ -97,10 +97,10 @@ def moveMotorButtonPress():
 def measureDist():
     while True:
         try:
-            tof.getDistance()
+            tof.getDistance(TOF_INTERVAL)
         except:
             print("Unable to read, retrying in 5s...")
-            time.sleep(5)
+            sleep(5)
 
 
 
@@ -139,4 +139,4 @@ if __name__ == "__main__":
     motorThread.start()
 
     tofThread = threading.Thread(target=measureDist, daemon=True)
-    tofthread.start()
+    tofThread.start()
