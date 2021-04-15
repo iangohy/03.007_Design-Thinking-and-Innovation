@@ -22,7 +22,7 @@ PULSE_PER_REV = 800
 PERCENT_PER_REV = 4
 BLINK_COUNT = 4
 TOF_INTERVAL = 3
-TOF_MAX = 65
+TOF_MAX = 80
 
 LED_COUNTER = {"plastic": 1, "paper": 1, "can": 1, "waste": 1}
 
