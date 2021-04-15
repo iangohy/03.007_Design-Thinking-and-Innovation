@@ -46,6 +46,13 @@ For testing without barcode scanner, set `$recyclace=testing`
 | GPIO 14                     | Terminal A |
 | 3.3V                        | Terminal B |
 
+### VL53L0X Sensor
+| Raspberry Pi                | VL53L0X |
+| --------------------------- | ------ |
+| 3.3V                        | VIN |
+| GND                         | GND |
+| SDA                         | SDA |
+| SCL                         | SCL |
 
 ## Files
 
