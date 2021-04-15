@@ -11,7 +11,7 @@ import busio
  
 import adafruit_vl53l0x
 
-def getDistance(interval):
+def getDistance(interval, maxHeight):
  
     # Initialize I2C bus and sensor.
     i2c = busio.I2C(board.SCL, board.SDA)
@@ -28,5 +28,11 @@ def getDistance(interval):
     
     # Main loop will read the range and print it every second.
     while True:
-        logging.info(f"Range: {vl53.range}mm")
+        dist = vl53.range / 10
+        percentage = (maxHeight - dist) / maxHeight * 100
+        if percentage > 95:
+            percentage = 100
+        elif percentage < 0:
+            percentage = 0
+        logging.info(f">>>>>>>Distance Measured: {dist}cm, {percentage}% filled")
         time.sleep(interval)

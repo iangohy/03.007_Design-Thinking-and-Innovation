@@ -22,6 +22,7 @@ PULSE_PER_REV = 800
 PERCENT_PER_REV = 4
 BLINK_COUNT = 4
 TOF_INTERVAL = 3
+TOF_MAX = 65
 
 LED_COUNTER = {"plastic": 1, "paper": 1, "can": 1, "waste": 1}
 
@@ -97,7 +98,7 @@ def moveMotorButtonPress():
 def measureDist():
     while True:
         try:
-            tof.getDistance(TOF_INTERVAL)
+            tof.getDistance(TOF_INTERVAL, TOF_MAX)
         except:
             print("Unable to read, retrying in 5s...")
             sleep(5)
