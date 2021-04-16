@@ -30,7 +30,7 @@ def getDistance(interval, maxHeight):
     while True:
         dist = vl53.range / 10
         percentage = (maxHeight - dist) / maxHeight * 100
-        if percentage > 95:
+        if percentage > 90:
             percentage = 100
         elif percentage < 0:
             percentage = 0
