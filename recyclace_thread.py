@@ -89,8 +89,8 @@ def moveMotorButtonPress():
                 motor_1 = stepper.StepperMotor(enablePin=ENA_PIN, dirPin=DIR_PIN, pulsePin=PUL_PIN, rps = RPS, pulsePerRev = PULSE_PER_REV, percentPerRev=PERCENT_PER_REV)
 
                 # Calculate optimum percentage
-                if int(motor_1.percent) != 90:
-                    motor_1.rotateTo(90)
+                if int(motor_1.percent) != 70:
+                    motor_1.rotateTo(70)
                 else:
                     motor_1.rotateTo(30)
                 sleep(5)
