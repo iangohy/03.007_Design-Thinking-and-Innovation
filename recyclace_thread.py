@@ -20,7 +20,7 @@ PUL_PIN = 22
 RPS = 1600
 PULSE_PER_REV = 800
 PERCENT_PER_REV = 4
-BLINK_COUNT = 4
+BLINK_COUNT = 5
 TOF_INTERVAL = 3
 TOF_MAX = 60
 
@@ -40,7 +40,7 @@ class LedThread(threading.Thread):
             if LED_COUNTER[self.category] > 0:
                 logging.info(self.category + " HIGH")
                 GPIO.output(self.pin, GPIO.HIGH)
-                sleep(1.5)
+                sleep(0.5)
 
                 logging.info(self.category + " LOW")
                 GPIO.output(self.pin, GPIO.LOW)
