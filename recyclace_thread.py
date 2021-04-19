@@ -72,7 +72,11 @@ class LedThread(threading.Thread):
 def classifyWaste():
     while True:
         category = barcode.getBarcodeData()
-        LED_COUNTER[category] = BLINK_COUNT
+        for i in ["paper", "plastic", "can", "waste"]:
+            if i == category:
+                LED_COUNTER[category] = BLINK_COUNT
+            else:
+                LED_COUNTER[i] = 0
 
 def classifyWasteTesting():
     while True:
