@@ -24,7 +24,7 @@ BLINK_COUNT = 5
 TOF_INTERVAL = 3
 TOF_MAX = 60
 
-LED_COUNTER = {"plastic": 1, "paper": 1, "can": 1, "waste": 1}
+LED_COUNTER = {"plastic": 3, "paper": 3, "can": 3, "waste": 3}
 
 class LedThread(threading.Thread):
     def __init__(self, pin, category):
