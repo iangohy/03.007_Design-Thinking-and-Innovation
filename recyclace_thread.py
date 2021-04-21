@@ -40,7 +40,9 @@ class LedThread(threading.Thread):
             if LED_COUNTER[self.category] > 0:
                 logging.info(self.category + " HIGH")
                 GPIO.output(self.pin, GPIO.HIGH)
-                sleep(0.5)
+                for i in range(50):
+                    if LED_COUNTER[self.category] > 0:
+                        sleep(0.01)
 
                 logging.info(self.category + " LOW")
                 GPIO.output(self.pin, GPIO.LOW)
