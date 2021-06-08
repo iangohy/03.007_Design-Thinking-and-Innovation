@@ -25,6 +25,23 @@ As the bin fills up, a time-of-flight sensor (VL53L0X) will collect data on the 
 
 When the bin is filled, cleaners will remove the bags of waste from the bin before turning the keylock switch. This will activate the optimisation of compartments, where stepper motors (controlled via TB6600 motor driver) will adjust the dividing compartments to change the volume of the compartments. After optimisation, cleaners will be able to attach new plastic linings to the compartments. With such a mechanism, the bin will optimise over time, reducing the cleaning frequency and increasing the efficiency of recycling.
 
+## Prototype Showcase
+
+<img src="./media/prototype_full.jpg" alt="full view" style="zoom:50%;" >
+<img src="./media/prototype_electricals.jpg" alt="electricals" style="zoom:50%;" >
+
+## Team
+
+*Special thanks to Prof Javier Fernandez and Ar. Bianca Gill for their advice and guidance during this project.*
+
+Ian Goh - Software & Electrical
+
+Joyce Lim - Mechanical
+
+Hayden Ang - Mechanical
+
+Fan Cheng - Support
+
 ## Technical Details
 
 ### Testing mode
@@ -90,16 +107,3 @@ data.csv - Barcode database of items
 *Read barcode data: https://www.raspberrypi.org/forums/viewtopic.php?t=55100*
 
 *Stepper motor driver: https://www.instructables.com/Raspberry-Pi-Python-and-a-TB6600-Stepper-Motor-Dri/*
-
-## Team
-
-*Special thanks to Prof Javier Fernandez and Ar. Bianca Gill for their advice and guidance during this project.*
-
-Ian Goh - Software & Electrical
-
-Joyce Lim - Mechanical
-
-Hayden Ang - Mechanical
-
-Fan Cheng - Support
-
