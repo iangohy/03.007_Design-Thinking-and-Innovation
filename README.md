@@ -1,11 +1,7 @@
 # Recyclace - A Multi-functional Recycling Bin
 Recyclace, conceptualised as part of 03.007 Design Thinking and Innovation, is an adaptable and dynamic solution to tackle waste management in this ever-changing environment. With an optimisation feature that adjusts each compartment to ensure maximum utility of the spaces within, it aims to increase the efficiency of recycling. A comfortable height and width allow users to easily access all compartments and barcode scanners on all sides helps to simplify the recycling process for users, reducing doubt and uncertainty during recycling.
 
-
-
 https://user-images.githubusercontent.com/16506822/121227355-09483280-c8be-11eb-8d92-64fba5956b4a.mp4
-
-
 
 ## Problem
 
@@ -27,8 +23,10 @@ When the bin is filled, cleaners will remove the bags of waste from the bin befo
 
 ## Prototype Showcase
 
-<img src="./media/prototype_full.jpg" alt="full view" style="zoom:50%;" >
-<img src="./media/prototype_electricals.jpg" alt="electricals" style="zoom:50%;" >
+https://user-images.githubusercontent.com/16506822/121231125-9c836700-c8c2-11eb-871f-eb5178e8db6b.mp4
+
+<img src="./media/prototype_full.jpg" alt="full view" width=50%>
+<img src="./media/prototype_electricals.jpg" alt="electricals" width=50% >
 
 ## Team
 
