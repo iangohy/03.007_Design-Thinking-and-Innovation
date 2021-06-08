@@ -3,7 +3,9 @@ Recyclace, conceptualised as part of 03.007 Design Thinking and Innovation, is a
 
 
 
-![recyclace](media/key_image.png)
+https://user-images.githubusercontent.com/16506822/121227355-09483280-c8be-11eb-8d92-64fba5956b4a.mp4
+
+
 
 ## Problem
 
